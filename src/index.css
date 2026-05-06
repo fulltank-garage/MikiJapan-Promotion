@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg: #fbf7f0;
+    --color-surface: #fffaf3;
+    --color-surface-strong: #f7e9d8;
+    --color-border: #ead8c4;
+    --color-primary: #9a704d;
+    --color-primary-dark: #765236;
+    --color-accent: #647765;
+    --color-accent-dark: #35493d;
+    --color-wine: #8f4d45;
+    --color-ink: #31241d;
+    --color-text: #4b3527;
+    --color-muted: #8a705b;
+
+    color: var(--color-text);
+    background: var(--color-bg);
+    font-family:
+      "Noto Sans Thai", ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100dvh;
+    min-width: 320px;
+    margin: 0;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+  }
+
+  #root {
+    min-height: 100dvh;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-primary) 28%, white);
+  }
+}
