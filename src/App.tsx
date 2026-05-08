@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react'
 import collectionKnitwear from './assets/collection-knitwear.jpg'
 import collectionRacks from './assets/collection-racks.jpg'
 import collectionStreetwear from './assets/collection-streetwear.jpg'
 import heroWholesale from './assets/hero-wholesale.jpg'
 import mikiJapanLogo from './assets/miki-japan-logo.jpg'
+import { getApiHealth } from './services/promotionService'
 
 type Collection = {
   image: string
@@ -16,6 +18,8 @@ type PackageDeal = {
   quantity: string
   detail: string
 }
+
+type ApiStatus = 'checking' | 'ready' | 'offline'
 
 const highlights = [
   'คัดเกรดก่อนส่ง',
@@ -63,6 +67,35 @@ const packageDeals: PackageDeal[] = [
 ]
 
 function App() {
+  const [apiStatus, setApiStatus] = useState<ApiStatus>('checking')
+
+  useEffect(() => {
+    let isMounted = true
+
+    getApiHealth()
+      .then((health) => {
+        if (isMounted) {
+          setApiStatus(health.status === 'ok' ? 'ready' : 'offline')
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setApiStatus('offline')
+        }
+      })
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  const apiStatusText =
+    apiStatus === 'checking'
+      ? 'กำลังเชื่อมต่อ API'
+      : apiStatus === 'ready'
+        ? 'API พร้อมใช้งาน'
+        : 'ติดต่อผ่าน LINE ได้ตามปกติ'
+
   return (
     <main className="min-h-dvh bg-[var(--color-bg)] text-[var(--color-text)]">
       <header className="fixed inset-x-0 top-0 z-30 border-b border-white/15 bg-[color:var(--color-ink)]/72 px-4 pt-[calc(env(safe-area-inset-top)+10px)] backdrop-blur-md">
@@ -288,6 +321,22 @@ function App() {
             <p className="mt-4 text-sm leading-6 text-[var(--color-muted)]">
               แจ้งงบประมาณ หมวดสินค้าที่อยากได้ และช่องทางขาย ทีมจะช่วยแนะนำล็อตที่เหมาะกับรอบขายของร้าน
             </p>
+            <div
+              className="mt-5 inline-flex items-center gap-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-sm font-semibold text-[var(--color-muted)]"
+              role="status"
+            >
+              <span
+                className={[
+                  'size-2 rounded-full',
+                  apiStatus === 'ready'
+                    ? 'bg-[var(--color-accent)]'
+                    : apiStatus === 'checking'
+                      ? 'bg-[var(--color-primary)]'
+                      : 'bg-[var(--color-wine)]',
+                ].join(' ')}
+              />
+              {apiStatusText}
+            </div>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 className="flex min-h-12 items-center justify-center rounded-md bg-[var(--color-primary)] px-5 text-base font-semibold text-white transition hover:bg-[var(--color-primary-dark)]"
