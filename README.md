@@ -10,6 +10,8 @@
 
 ## Run
 
+Use Node.js 24.x.
+
 ```bash
 npm install
 npm run dev
@@ -24,6 +26,8 @@ npm run dev
 ```bash
 VITE_API_BASE_URL=http://localhost:8080/api
 ```
+
+Production builds require `VITE_API_BASE_URL`; local `http://localhost:8080/api` is only used in dev mode.
 
 Promotion ใช้ route จาก `MikiJapan-Api` เฉพาะ route public ที่จำเป็น:
 
