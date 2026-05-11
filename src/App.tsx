@@ -114,8 +114,8 @@ function App() {
 
   return (
     <main className="min-h-dvh bg-[var(--color-bg)] text-[var(--color-text)]">
-      <header className="sticky top-0 z-30 border-b border-[var(--color-border)] bg-[color:var(--color-surface)]/95 px-4 pb-3 pt-[calc(env(safe-area-inset-top)+14px)] backdrop-blur">
-        <div className="mx-auto flex h-10 w-full max-w-6xl items-center justify-between gap-4">
+      <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col">
+        <header className="sticky top-0 z-10 border-b border-[var(--color-border)] bg-[var(--color-surface)] px-4 pb-3 pt-[calc(env(safe-area-inset-top)+14px)]">
           <a className="flex min-w-0 items-center gap-3" href="#top">
             <img
               alt="Miki Japan"
@@ -133,41 +133,17 @@ function App() {
               </p>
             </div>
           </a>
-          <nav className="hidden items-center gap-5 text-sm font-semibold text-[var(--color-muted)] md:flex">
-            <a
-              className="transition hover:text-[var(--color-primary-dark)]"
-              href="#collections"
-            >
-              ล็อตสินค้า
-            </a>
-            <a
-              className="transition hover:text-[var(--color-primary-dark)]"
-              href="#packages"
-            >
-              แพ็กค้าส่ง
-            </a>
-            <a
-              className="transition hover:text-[var(--color-primary-dark)]"
-              href="#contact"
-            >
-              ติดต่อ
-            </a>
-          </nav>
-        </div>
-      </header>
+        </header>
 
-      <section
-        className="px-4 py-5 sm:px-6 lg:px-8 lg:py-10"
-        id="top"
-      >
-        <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-          <div className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm sm:p-7 lg:p-9">
+        <section className="px-4 py-5" id="top">
+          <div className="grid gap-5">
+            <div className="rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm">
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface-strong)] px-3 py-1.5 text-sm font-semibold text-[var(--color-primary-dark)]">
               <span className="size-2 rounded-full bg-[var(--color-primary)]" />
               เสื้อผ้าญี่ปุ่นคัดเกรดสำหรับร้านค้า
             </div>
 
-            <h1 className="text-[2rem] font-bold leading-[1.16] text-[var(--color-ink)] sm:text-4xl lg:text-5xl">
+            <h1 className="text-[2rem] font-bold leading-[1.16] text-[var(--color-ink)]">
               โปรโมชันเสื้อผ้า
               <span className="whitespace-nowrap">ค้าส่ง</span>
               <span className="block text-[var(--color-primary-dark)]">
@@ -181,7 +157,7 @@ function App() {
             <div className="mt-7 grid grid-cols-3 gap-2">
               {highlights.map((item) => (
                 <div
-                  className="rounded-2xl border border-[var(--color-border)] bg-white px-3 py-3 text-center text-sm font-semibold leading-5 text-[var(--color-text)]"
+                  className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-3 text-center text-sm font-semibold leading-5 text-[var(--color-text)]"
                   key={item}
                 >
                   {item}
@@ -189,7 +165,7 @@ function App() {
               ))}
             </div>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3">
               <a
                 className="flex min-h-12 items-center justify-center rounded-2xl bg-[var(--color-primary)] px-5 text-base font-semibold text-white shadow-sm transition active:scale-[0.99] hover:bg-[var(--color-primary-dark)]"
                 href="#collections"
@@ -197,7 +173,7 @@ function App() {
                 ดูล็อตแนะนำ
               </a>
               <a
-                className="flex min-h-12 items-center justify-center rounded-2xl border border-[var(--color-border)] bg-white px-5 text-base font-semibold text-[var(--color-primary-dark)] transition active:scale-[0.99] hover:bg-[var(--color-surface-strong)]"
+                className="flex min-h-12 items-center justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-5 text-base font-semibold text-[var(--color-primary-dark)] transition active:scale-[0.99] hover:bg-[var(--color-surface-strong)]"
                 href="#contact"
               >
                 ติดต่อสั่งค้าส่ง
@@ -205,10 +181,10 @@ function App() {
             </div>
           </div>
 
-          <div className="relative overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm">
+          <div className="relative overflow-hidden rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm">
             <img
               alt="ราวเสื้อผ้าค้าส่งของ Miki Japan"
-              className="aspect-[4/5] w-full rounded-2xl object-cover lg:aspect-[5/6]"
+              className="aspect-[4/5] w-full rounded-2xl object-cover"
               src={heroWholesale}
             />
             <div className="absolute inset-x-6 bottom-6 rounded-2xl border border-white/35 bg-[color:var(--color-ink)]/72 px-4 py-3 text-white shadow-lg backdrop-blur">
@@ -221,21 +197,21 @@ function App() {
         </div>
       </section>
 
-      <section className="px-4 pb-5 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-3">
+      <section className="px-4 pb-5">
+        <div className="grid grid-cols-3 gap-2">
           {[
             ['50+', 'เริ่มต้นล็อตเล็กสำหรับร้านใหม่'],
             ['3 เกรด', 'คัดสภาพสินค้าให้เลือกตามงบ'],
             ['พร้อมขาย', 'จัดหมวดและรูปภาพสำหรับทำโปรโมชัน'],
           ].map(([value, label]) => (
             <div
-              className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm"
+              className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm"
               key={value}
             >
-              <p className="text-3xl font-bold text-[var(--color-ink)]">
+              <p className="text-2xl font-bold text-[var(--color-ink)]">
                 {value}
               </p>
-              <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
+              <p className="mt-1 text-xs leading-5 text-[var(--color-muted)]">
                 {label}
               </p>
             </div>
@@ -244,16 +220,16 @@ function App() {
       </section>
 
       <section
-        className="px-4 py-8 sm:px-6 lg:px-8 lg:py-12"
+        className="px-4 py-5"
         id="collections"
       >
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-5 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm sm:p-7">
+        <div>
+          <div className="mb-5 rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm">
             <div>
               <p className="text-sm font-semibold text-[var(--color-primary-dark)]">
                 ล็อตภาพแนะนำ
               </p>
-              <h2 className="mt-2 text-2xl font-bold text-[var(--color-ink)] sm:text-4xl">
+              <h2 className="mt-2 text-2xl font-bold text-[var(--color-ink)]">
                 เลือกจากภาพสินค้าและสไตล์ที่ขายได้จริง
               </h2>
             </div>
@@ -262,10 +238,10 @@ function App() {
             </p>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4">
             {collections.map((collection) => (
               <article
-                className="overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm"
+                className="overflow-hidden rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm"
                 key={collection.title}
               >
                 <div className="relative">
@@ -293,11 +269,11 @@ function App() {
       </section>
 
       <section
-        className="px-4 py-8 sm:px-6 lg:px-8 lg:py-12"
+        className="px-4 py-5"
         id="packages"
       >
-        <div className="mx-auto max-w-6xl rounded-3xl border border-[var(--color-border)] bg-[var(--color-ink)] p-5 text-white shadow-sm sm:p-7 lg:p-9">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-ink)] p-5 text-white shadow-sm">
+          <div className="grid gap-8">
             <div>
               <p className="text-sm font-semibold text-[color:var(--color-surface-strong)]">
                 แพ็กค้าส่ง
@@ -313,10 +289,10 @@ function App() {
             <div className="grid gap-3">
               {packageDeals.map((deal) => (
                 <article
-                  className="rounded-2xl border border-white/12 bg-white/[0.07] p-5"
+                  className="rounded-2xl border border-white/12 bg-white/[0.08] p-5"
                   key={deal.title}
                 >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-col gap-3">
                     <div>
                       <h3 className="text-lg font-bold">{deal.title}</h3>
                       <p className="mt-2 text-sm leading-6 text-white/68">
@@ -334,33 +310,33 @@ function App() {
         </div>
       </section>
 
-      <section className="px-4 py-14 sm:px-6 lg:px-8" id="contact">
-        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      <section className="px-4 py-5 pb-[calc(env(safe-area-inset-bottom)+24px)]" id="contact">
+        <div className="grid gap-5">
           <div className="grid grid-cols-2 gap-3">
             <img
               alt="ล็อตเสื้อผ้าพร้อมจัดส่ง"
-              className="aspect-[3/4] rounded-3xl border border-[var(--color-border)] object-cover shadow-sm"
+              className="aspect-[3/4] rounded-[2rem] border border-[var(--color-border)] object-cover shadow-sm"
               src={collectionRacks}
             />
             <img
               alt="สินค้าแฟชั่นสำหรับทำโปรโมชัน"
-              className="mt-8 aspect-[3/4] rounded-3xl border border-[var(--color-border)] object-cover shadow-sm"
+              className="mt-8 aspect-[3/4] rounded-[2rem] border border-[var(--color-border)] object-cover shadow-sm"
               src={collectionKnitwear}
             />
           </div>
 
-          <div className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm sm:p-7">
+          <div className="rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm">
             <p className="text-sm font-semibold text-[var(--color-primary-dark)]">
               เติมสต็อกล็อตถัดไป
             </p>
-            <h2 className="mt-2 text-2xl font-bold text-[var(--color-ink)] sm:text-4xl">
+            <h2 className="mt-2 text-2xl font-bold text-[var(--color-ink)]">
               ส่งจำนวนที่ต้องการ แล้วให้ทีมจัดรูปล็อตสำหรับร้านคุณ
             </h2>
             <p className="mt-4 text-sm leading-6 text-[var(--color-muted)]">
               แจ้งงบประมาณ หมวดสินค้าที่อยากได้ และช่องทางขาย ทีมจะช่วยแนะนำล็อตที่เหมาะกับรอบขายของร้าน
             </p>
             <div
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white px-3 py-2 text-sm font-semibold text-[var(--color-muted)]"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-sm font-semibold text-[var(--color-muted)]"
               role="status"
             >
               <span
@@ -370,7 +346,7 @@ function App() {
               />
               {apiStatusMeta.text}
             </div>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3">
               <a
                 className="flex min-h-12 items-center justify-center rounded-2xl bg-[var(--color-primary)] px-5 text-base font-semibold text-white shadow-sm transition active:scale-[0.99] hover:bg-[var(--color-primary-dark)]"
                 href="https://line.me/R/ti/p/@mikijapan"
@@ -380,7 +356,7 @@ function App() {
                 ขอรูปล็อตทางไลน์
               </a>
               <a
-                className="flex min-h-12 items-center justify-center rounded-2xl border border-[var(--color-border)] bg-white px-5 text-base font-semibold text-[var(--color-primary-dark)] transition active:scale-[0.99] hover:bg-[var(--color-surface-strong)]"
+                className="flex min-h-12 items-center justify-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-5 text-base font-semibold text-[var(--color-primary-dark)] transition active:scale-[0.99] hover:bg-[var(--color-surface-strong)]"
                 href="#packages"
               >
                 ดูแพ็กค้าส่ง
@@ -389,6 +365,7 @@ function App() {
           </div>
         </div>
       </section>
+      </div>
     </main>
   )
 }
